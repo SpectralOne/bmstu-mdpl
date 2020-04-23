@@ -25,11 +25,11 @@ sh_out_print_number:
         jbe sh_out_print     ; Прыгаем, если это цифра 0..9
         add al,	'A'-('9'+1)  ; Иначе (для A..F) корректируем ее
 	sh_out_print:
-		mov dl, al ; произошёл троллинг.............
-		mov ah, 2h
-		int 21h
+	;mov dl, al ; произошёл троллинг.............
+	;mov ah, 2h
+	;int 21h
 	
-        ;int 29h    ;???        ; Выводим символ в al на экран
+        int 29h    ;rofl   ; Выводим символ в al на экран
         sub cl,	4          ; Уменьшаем CL на 4 для следующей цифры
         jnc sh_out_cycle
         ret

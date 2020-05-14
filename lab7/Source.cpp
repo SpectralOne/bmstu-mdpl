@@ -5,9 +5,9 @@
 #include <string>
 #include <iostream>
 
-extern "C" void my_strncpy(const char* src, char* dst, const int len);
+extern "C" void my_strncpy(char* src, char* dst, const int len);
 
-int my_strlen(const char* string) {
+int my_strlen(char* string) {
 	int len;
 
 	__asm {
@@ -27,15 +27,14 @@ int my_strlen(const char* string) {
 }
 
 int main(void) {
-	std::string str;
-	std::cin >> str;
+	char str[6] = "test";
+	char test[6] = { 0 };
+	int res = my_strlen(str);
+	
+	std::cout << res << std::endl;
 
-	int len = my_strlen(str.c_str());
-
-    char test[6] = { 0 };
-	my_strncpy(str.c_str(), test, len);
-
-	std::cout << test << " : " << len << std::endl;
+	my_strncpy(str, test, res);
+	std::cout << test << " : " << res << std::endl;
 
 	return 0;
 }

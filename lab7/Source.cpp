@@ -12,13 +12,13 @@ int my_strlen(const char* string) {
 
 	__asm {
 		mov edi, [string]
-		xor	ecx, ecx
-		xor	al, al
+		xor ecx, ecx
+		xor al, al
 		not ecx
 		repne scasb
 
 		not ecx
-		dec	ecx
+		dec ecx
 		
 		mov len, ecx
 	}
@@ -32,7 +32,7 @@ int main(void) {
 
 	int len = my_strlen(str.c_str());
 
-    char test[6] = { 0 };
+	char test[6] = { 0 };
 	my_strncpy(str.c_str(), test, len);
 
 	std::cout << test << " : " << len << std::endl;

@@ -1,38 +1,29 @@
-.386
-.model flat, c
-public my_strncpy
+global my_strncpy
 
-.code
-my_strncpy proc
-    push ebp
-    mov ebp, esp
-    push esi
-    push edi
-    
-    mov ecx, [ebp + 16] ; len
-    mov edi, [ebp + 12] ; dst
-    mov esi, [ebp + 8]  ; src
+section .text
+my_strncpy:
+    mov rcx, rdi
+    lea rsi, [rsi]
+    lea rdi, [rdx]
 
-    cld            ; direction = 0
-    cmp edi, esi
-    je exit        ; dst == src
-    jb forward     ; dst < src
+    cld
 
-    ; dst > src
-    std            ; direction = 1
-    add edi, ecx
-    dec edi
-    add esi, ecx
-    dec esi
+    cmp rsi, rdi
+    je exit            ; s2 == s1
+    jb forward         ; s2 < s1
 
-forward:
+    ; s2 > s1
+    std
+    add rsi, rcx
+    dec rsi
+    add rdi, rcx
+    dec rdi
+
+    forward:
     rep movsb			
 
-exit:
-    pop edi
-    pop esi
-    pop ebp
+    exit:
 
-	ret
-my_strncpy endp
-end
+    cld
+
+    ret

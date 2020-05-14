@@ -12,13 +12,13 @@ int my_strlen(char* string) {
 
 	__asm {
 		mov edi, [string]
-		xor	ecx, ecx
-		xor	al, al
+		xor ecx, ecx
+		xor al, al
 		not ecx
 		repne scasb
 
 		not ecx
-		dec	ecx
+		dec ecx
 		
 		mov len, ecx
 	}

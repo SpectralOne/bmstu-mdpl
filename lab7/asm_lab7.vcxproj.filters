@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="my_strcpy.asm">
+    <MASM Include="my_strncpy.asm">
       <Filter>Исходные файлы</Filter>
     </MASM>
   </ItemGroup>

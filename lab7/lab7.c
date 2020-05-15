@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <stdio.h>
 
 extern void my_strncpy(int, char*, char*);
@@ -9,8 +8,8 @@ int my_strlen(const char *string) {
         "repne scasb\n\t"
         "not %%rcx\n\t"
         "dec %%rcx"
-        :"=c" (len), "+D"(string)
-        :"c"(-1), "a"(0)
+        :"=c" (len), "+D"(string) // output
+        :"c"(-1), "a"(0) // input
         );
         
     return len;

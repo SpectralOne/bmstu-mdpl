@@ -1,8 +1,5 @@
 #pragma warning(disable : 4996)
 
-#include <stdio.h>
-#include <string.h>
-#include <string>
 #include <iostream>
 
 extern "C" void my_strncpy(char* src, char* dst, const int len);

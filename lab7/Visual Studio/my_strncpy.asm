@@ -10,15 +10,15 @@ my_strncpy proc
     push edi
     
     mov ecx, [ebp + 16] ; len
-    mov edi, [ebp + 12] ; dst
-    mov esi, [ebp + 8]  ; src
+    mov edi, [ebp + 12] ; s2
+    mov esi, [ebp + 8]  ; s1
 
     cld            ; direction = 0
     cmp edi, esi
-    je exit        ; dst == src
-    jb forward     ; dst < src
+    je exit        ; s2 == s1
+    jb forward     ; s2 < s1
 
-    ; dst > src
+    ; s2 > s1
     std            ; direction = 1
     add edi, ecx
     dec edi

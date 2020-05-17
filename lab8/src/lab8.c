@@ -4,7 +4,7 @@
 #include "SDL_image.h"
 
 extern unsigned long long int tsCount();
-extern void fadeShiftAsm(unsigned char* buf, int width, int height);
+extern void fadeShiftAsm(unsigned char *buf, const int width, const int height);
 
 void fadeShiftC(unsigned char* buf, int width, int height) {
     unsigned long long int size = width * height;
@@ -14,7 +14,7 @@ void fadeShiftC(unsigned char* buf, int width, int height) {
     }
 }
 
-SDL_Surface* loadImage(const char* fileName) {
+SDL_Surface* loadImage(const char *fileName) {
     return IMG_Load(fileName);
 }
 
@@ -23,7 +23,7 @@ void Paint(SDL_Surface* image, SDL_Surface* screen) {
     SDL_UpdateRect(screen, 0, 0, 0, 0);
 };
 
-int main(const int argc, const char* argv[]) {
+int main(const int argc, const char **argv) {
     SDL_Event event;
 
     SDL_Init(SDL_INIT_VIDEO);
